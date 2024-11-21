@@ -45,9 +45,9 @@ $ cd ~/dubai
 
 $ python3 ~/tiles2columns/main.py \
             --west=55.2112 \
-            --south=25.17104 \
             --east=55.34279 \
-            --north=25.2745
+            --north=25.2745 \
+            --south=25.17104
 ```
 
 The data will be saved in GeoPackage format by default. Use ``--pq`` to produce spatially-sorted, ZStandard-compressed Parquet instead.
