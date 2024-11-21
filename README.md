@@ -31,7 +31,7 @@ $ brew install \
 $ virtualenv ~/.tiles2columns
 $ source ~/.tiles2columns/bin/activate
 
-$ git clone https://github.com/marklit/tiles2columns ~/adsb_json
+$ git clone https://github.com/marklit/tiles2columns ~/tiles2columns
 $ python -m pip install -r ~/tiles2columns/requirements.txt
 ```
 
