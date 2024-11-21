@@ -1,6 +1,6 @@
 # tiles2columns
 
-This package converts OpenStreetMap's (OSM) vector tiles to GPKG and Parquet format.
+This package converts OpenStreetMap's (OSM) vector tiles to GPKG and Parquet format. https://tech.marksblogg.com/osm-mvt-vector-tiles.html has more details.
 
 ![QGIS](qgis-bin_EwGInUL32n.png)
 
@@ -81,6 +81,54 @@ $ ls -lhS *.gpkg
 ```
 
 Parquet files will generate faster than GeoPackage files but GeoPackage files can be dropped onto a QGIS projet whereas Parquet will need to be imported via the Add Vector Layers UI.
+
+The properties of each piece of geometry live in their own columns.
+
+```bash
+$ ~/duckdb
+```
+
+```sql
+.maxrows 20
+
+SELECT geom,
+       name
+FROM   ST_READ('pois.gpkg')
+WHERE  name IS NOT NULL;
+```
+
+```
+┌───────────────────────────────────────────────┬─────────────────────────────────────────────┐
+│                     geom                      │                    name                     │
+│                   geometry                    │                   varchar                   │
+├───────────────────────────────────────────────┼─────────────────────────────────────────────┤
+│ POINT (55.34712553024292 25.24918890107886)   │ Kiku                                        │
+│ POINT (55.34385323524475 25.248873526657135)  │ Fujiya Restaurant                           │
+│ POINT (55.34536063671112 25.24823792341191)   │ Mövenpick Grand Al Bustan Dubai             │
+│ POINT (55.3471577167511 25.248616374599663)   │ Sukhothai                                   │
+│ POINT (55.34707725048065 25.248858970894826)  │ Méridien Village Terrace                    │
+│ POINT (55.347533226013184 25.24869400546682)  │ M's Beef Bistro                             │
+│ POINT (55.347495675086975 25.248757080509858) │ M's Seafood Bistro                          │
+│ POINT (55.34720063209534 25.248645486180656)  │ Le Méridien Dubai Hotel & Conference Centre │
+│ POINT (55.34764587879181 25.248529039814816)  │ Long Yin                                    │
+│ POINT (55.34729182720184 25.24847081659004)   │ Le Méridien                                 │
+│                      ·                        │      ·                                      │
+│                      ·                        │      ·                                      │
+│                      ·                        │      ·                                      │
+│ POINT (55.34357964992523 25.250887056969173)  │ Grand Mercure Dubai Airport                 │
+│ POINT (55.343536734580994 25.250236908661204) │ Perfect Nail                                │
+│ POINT (55.344228744506836 25.25049890914417)  │ ibis Styles Dubai Airport                   │
+│ POINT (55.343976616859436 25.250867649607375) │ Grand Mercure Dubai Airport                 │
+│ POINT (55.3454464673996 25.251726422399933)   │ Ashrafi                                     │
+│ POINT (55.34471154212952 25.25214852883526)   │ Bin Hindi Outlet                            │
+│ POINT (55.34568250179291 25.251959308890466)  │ Restaurant                                  │
+│ POINT (55.349024534225464 25.25042127943035)  │ Emirates NBD ATM                            │
+│ POINT (55.344985127449036 25.257708552546877) │ The Draft House Sports Bar and Canteen      │
+│ POINT (55.344722270965576 25.25779102916772)  │ McDonald's                                  │
+├───────────────────────────────────────────────┴─────────────────────────────────────────────┤
+│ 6329 rows (20 shown)                                                              2 columns │
+└─────────────────────────────────────────────────────────────────────────────────────────────┘
+```
 
 ## Parameters
 
