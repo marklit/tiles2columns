@@ -37,15 +37,20 @@ $ python -m pip install -r ~/tiles2columns/requirements.txt
 
 ## Usage Example
 
-By default, an area around Northern Dubai with 42 tiles at zoom-level 14 will be downloaded.
+This will download an area around Northern Dubai with 42 tiles.
 
 ```bash
-$ python main.py
+$ mkdir -p ~/dubai
+$ cd ~/dubai
+
+$ python3 ~/tiles2columns/main.py
+            --west=55.2112 \
+            --south=25.17104 \
+            --east=55.34279 \
+            --north=25.2745
 ```
 
-The data will be in GeoPackage format by default. Use ``--pq`` to produce spatially-sorted, ZStandard-compressed Parquet instead.
-
-Parquet files will generate faster than GeoPackage files but GeoPackage files can be dropped onto a QGIS projet whereas Parquet will need to be imported via the Add Vector Layers UI.
+The data will be saved in GeoPackage format by default. Use ``--pq`` to produce spatially-sorted, ZStandard-compressed Parquet instead.
 
 ```bash
 $ ls -lhS *.gpkg
@@ -74,6 +79,9 @@ $ ls -lhS *.gpkg
  96K .. water_lines_labels.gpkg
  96K .. water_polygons_labels.gpkg
 ```
+
+Parquet files will generate faster than GeoPackage files but GeoPackage files can be dropped onto a QGIS projet whereas Parquet will need to be imported via the Add Vector Layers UI.
+
 ## Parameters
 
 ```bash
