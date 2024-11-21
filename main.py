@@ -46,6 +46,8 @@ def bbox(west:float,
          zoom:int     = typer.Option(14),
          verbose:bool = typer.Option(False),
          pq:bool      = typer.Option(False)):
+    assert 0 <= zoom <= 14
+
     con = duckdb.connect(database=':memory:')
     con.sql('INSTALL spatial; LOAD spatial')
     con.sql('INSTALL parquet; LOAD parquet')
