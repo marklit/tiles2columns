@@ -5,21 +5,22 @@
 # pylint: disable=R0911 R0912 R0913 R0914 R0915 R0916 R0917 R1702 R1729 R1732 R1718
 # pylint: disable=W0105 W0640 W0707 W0718 W1514
 
-from   glob               import glob
+from   glob                   import glob
 import json
 import math
-from   os                 import chdir, getcwd
-from   random             import randint
-from   shutil             import rmtree
+from   os                     import chdir, getcwd
+from   random                 import randint
+from   shutil                 import rmtree
 import sys
-from   tempfile           import mkdtemp
-from   time               import sleep
+from   tempfile               import mkdtemp
+from   time                   import sleep
 
 import duckdb
 import mapbox_vector_tile
 import morecantile
 import requests
-from   rich.progress      import track
+from   rich.progress          import track
+from   shapely.geometry.point import Point
 import typer
 
 
@@ -38,10 +39,10 @@ def pixel2deg(xtile, ytile, zoom, xpixel, ypixel, extent=4096):
 
 
 @app.command()
-def main(west:float   = typer.Option(55.21120),
-         south:float  = typer.Option(25.17104),
-         east:float   = typer.Option(55.34279),
-         north:float  = typer.Option(25.27450),
+def bbox(west:float,
+         south:float,
+         east:float,
+         north:float,
          zoom:int     = typer.Option(14),
          verbose:bool = typer.Option(False),
          pq:bool      = typer.Option(False)):
@@ -148,6 +149,23 @@ def main(west:float   = typer.Option(55.21120),
 
     chdir(current_folder)
     rmtree(temp_folder)
+
+
+@app.command()
+def centroid(lon:float,
+             lat:float,
+             distance:float     = typer.Option(0.05hd),
+             zoom:int     = typer.Option(14),
+             verbose:bool = typer.Option(False),
+             pq:bool      = typer.Option(False)):
+    west, south, east, north = Point(lon, lat).buffer(distance).bounds
+    return bbox(west,
+                south,
+                east,
+                north,
+                zoom,
+                verbose,
+                pq)
 
 
 if __name__ == "__main__":

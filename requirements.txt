@@ -3,4 +3,5 @@ mapbox_vector_tile
 morecantile
 requests
 rich
+shapely
 typer

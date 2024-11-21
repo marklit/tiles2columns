@@ -44,10 +44,9 @@ $ mkdir -p ~/dubai
 $ cd ~/dubai
 
 $ python3 ~/tiles2columns/main.py \
-            --west=55.2112 \
-            --east=55.34279 \
-            --north=25.2745 \
-            --south=25.17104
+                bbox \
+                55.2112  25.2745 \
+                55.34279 25.17104
 ```
 
 The data will be saved in GeoPackage format by default. Use ``--pq`` to produce spatially-sorted, ZStandard-compressed Parquet instead.
@@ -130,23 +129,13 @@ WHERE  name IS NOT NULL;
 └─────────────────────────────────────────────────────────────────────────────────────────────┘
 ```
 
-## Parameters
+### From a point
+
+The following will download 35 tiles that intersect with the bounding box around the point's radius.
 
 ```bash
-$ python main.py --help
-```
-
-```
-╭─ Options ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
-│ --west                                  FLOAT    [default: 55.2112]                                                               │
-│ --south                                 FLOAT    [default: 25.17104]                                                              │
-│ --east                                  FLOAT    [default: 55.34279]                                                              │
-│ --north                                 FLOAT    [default: 25.2745]                                                               │
-│ --zoom                                  INTEGER  [default: 14]                                                                    │
-│ --verbose               --no-verbose             [default: no-verbose]                                                            │
-│ --pq                    --no-pq                  [default: no-pq]                                                                 │
-│ --install-completion                             Install completion for the current shell.                                        │
-│ --show-completion                                Show completion for the current shell, to copy it or customize the installation. │
-│ --help                                           Show this message and exit.                                                      │
-╰───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+$ python3 main.py \
+            centroid \
+            55.2112 25.2745 \
+            --distance=0.05
 ```
