@@ -140,7 +140,7 @@ $ python3 ~/tiles2columns/main.py \
             --distance=0.05
 ```
 
-The point defined above is marked with a black dot. Its radius is outlined with a green circle. The radius' bounding box is outlined with a red box. There are four figurative OSM tiles intersecting that red box are outlined in orange.
+The point defined above is marked with a black dot. Its radius is outlined with a green circle. The radius' bounding box is outlined with a red box. Four figurative OSM tiles intersecting that red box are outlined in orange.
 
 Any data in those tiles will be downloaded.
 
