@@ -134,7 +134,7 @@ WHERE  name IS NOT NULL;
 The following will download 35 tiles that intersect with the bounding box around the point's radius.
 
 ```bash
-$ python3 main.py \
+$ python3 ~/tiles2columns/main.py \
             centroid \
             55.2112 25.2745 \
             --distance=0.05
