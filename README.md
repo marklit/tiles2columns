@@ -139,3 +139,9 @@ $ python3 ~/tiles2columns/main.py \
             55.2112 25.2745 \
             --distance=0.05
 ```
+
+The point defined above is marked with a black dot. Its radius is outlined with a green circle. The radius' bounding box is outlined with a red box. The four zoom-level 14 OSM tiles that intersect that red box are outlined in orange.
+
+Any data in those four tiles will be downloaded.
+
+![QGIS](qgis-bin_U5j7EN3HNm.png)
