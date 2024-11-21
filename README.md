@@ -80,7 +80,7 @@ $ ls -lhS *.gpkg
  96K .. water_polygons_labels.gpkg
 ```
 
-Parquet files will generate faster than GeoPackage files but GeoPackage files can be dropped onto a QGIS projet whereas Parquet will need to be imported via the Add Vector Layers UI.
+Parquet files will generate faster than GeoPackage files but GeoPackage files can be dropped onto a QGIS project whereas Parquet will need to be imported via the Add Vector Layers UI.
 
 The properties of each piece of geometry live in their own columns.
 
