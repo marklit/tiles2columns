@@ -131,7 +131,7 @@ WHERE  name IS NOT NULL;
 
 ### From a point
 
-The following will download 35 tiles that intersect with the bounding box around the point's radius.
+The following will download 35 tiles that intersect with the bounding box around the radius around the point.
 
 ```bash
 $ python3 ~/tiles2columns/main.py \
