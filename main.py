@@ -154,7 +154,7 @@ def bbox(west:float,
 @app.command()
 def centroid(lon:float,
              lat:float,
-             distance:float     = typer.Option(0.05hd),
+             distance:float     = typer.Option(0.05),
              zoom:int     = typer.Option(14),
              verbose:bool = typer.Option(False),
              pq:bool      = typer.Option(False)):
