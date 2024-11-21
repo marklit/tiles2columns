@@ -43,7 +43,7 @@ This will download an area around Northern Dubai with 42 tiles.
 $ mkdir -p ~/dubai
 $ cd ~/dubai
 
-$ python3 ~/tiles2columns/main.py
+$ python3 ~/tiles2columns/main.py \
             --west=55.2112 \
             --south=25.17104 \
             --east=55.34279 \
