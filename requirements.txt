@@ -1,6 +1,6 @@
 duckdb
 mapbox_vector_tile
-morecantile<=6.10
+morecantile<=6.2
 requests
 rich
 shapely
