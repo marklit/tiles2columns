@@ -38,7 +38,7 @@ def pixel2deg(xtile, ytile, zoom, xpixel, ypixel, extent=4096):
     return (lon_deg, lat_deg)
 
 
-@app.command()
+@app.command(context_settings={"ignore_unknown_options": True})
 def bbox(west:float,
          south:float,
          east:float,
@@ -153,7 +153,7 @@ def bbox(west:float,
     rmtree(temp_folder)
 
 
-@app.command()
+@app.command(context_settings={"ignore_unknown_options": True})
 def centroid(lon:float,
              lat:float,
              distance:float = typer.Option(0.05),
